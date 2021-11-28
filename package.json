@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/yevseym/cigna-assessment.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/yevseym/cigna-assessment/issues"
   },
   "homepage": "",
   "devDependencies": {
