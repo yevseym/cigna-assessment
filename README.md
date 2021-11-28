@@ -7,8 +7,8 @@ A cypress project for Cigna assessment using the demoblaze.com site
 
 ## **Set Up**
 1. Clone the project in your machine
-2. Traverse to the project directory 
-3. In the project directory run "npm install" in ypur terminal
+2. Switch to the project directory 
+4. In the project directory run "npm install" in the terminal
 
 ## **Run the tests**
 1. Open New Terminal
