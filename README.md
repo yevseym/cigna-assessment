@@ -10,8 +10,12 @@ A cypress project for Cigna assessment using the demoblaze.com site
 2. Switch to the project directory 
 4. In the project directory run "npm install" in the terminal
 
-## **Run the tests**
+## **Run the tests in Cypress UI**
 1. Open New Terminal
-1. Run "npx cypress open" to open up cypress UI in the terminal
+1. Run "npm run cypress:open" to open up cypress UI in the terminal
 2. Click on any of the .spec.js files to run test suites.
 
+## **Run the tests in headed or headless browser**
+1. Open New Terminal
+1. Run "npm run cypress:run" to execute tests in headed browser
+2. Run "npm rum cypress:run-headless" to execute tests in headless browser

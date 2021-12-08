@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "cypress:open": "node_modules\\.bin\\cypress open",
-    "cypress:run": "node_modules\\.bin\\cypress run --spec **/*.spec.js"
+    "cypress:run": "node_modules\\.bin\\cypress run --spec **/*.spec.js --headed --browser chrome",
+    "cypress:run-headless": "node_modules\\.bin\\cypress run --spec **/*.spec.js"
   },
   "repository": {
     "type": "git",

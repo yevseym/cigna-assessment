@@ -14,6 +14,6 @@ export const alert = {
         cy.on('window:alert', (message) => {
             expect(message).to.contain(str);
             // cypress clicks on OK by default on window alerts
-        })
+        });
     },
 }

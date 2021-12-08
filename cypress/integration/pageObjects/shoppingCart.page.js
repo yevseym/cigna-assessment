@@ -24,35 +24,81 @@ const product = {
     sweetAlert: () => cy.get('.sweet-alert'),
     okButton: () => cy.findByRole('button', {name: /ok/i}),
     orderText: () => cy.findByText(/Card Number:/i),
-
-
 }
 
 export const buy = {
-    clickOnProduct () {product.thirdProduct().click();},
-    imageShouldBeVisible () {product.productImage().should('be.visible')},
-    productTitleShouldBeVisible () {product.productTitle().should('be.visible')},
-    priceContainerShouldBeVisible () {product.priceContainer().should('be.visible')},
-    productDescriptionShouldBeVisible () {product.productDescriptionTab().should('be.visible')},
-    clickOnAddToCart () {product.addToCartButton().click();},
-    cartAlertShouldHaveText (text) {alert.textEqualsTo(text)},
-    clickOnCart (){product.cart().click();},
-    numberOfProductsAddedShouldBe (number) {product.productsAdded().should('have.length', number)},
-    totalPriceShouldBeVisible(){product.totalPrice().should('be.visible')},
-    cartPageTitleShouldBe(text){product.cartPageTitle().should('have.text', text)},
-    tableHeadImageTextShouldBe(text){product.tableHeadImage().should('have.text', text)},
-    tableHeadTitleTextShouldBe(text){product.tableHeadTitle().should('have.text', text)},
-    tableHeadPriceTextShouldBe(text){product.tableHeadPrice().should('have.text', text)},
-    tableHeadDeleteTextShouldBe(text){product.tableHeadDelete().should('have.text', text)},
-    deleteFirstProduct(){product.firstDeleteButton().click();},
-    placeORder(){product.placeOrderButton().click()},
-    orderModalShouldBeVisible () {product.orderModal().should('be.visible');},
-    clickOnPurchase(){product.purchaseButton().click();},
-    typeName(text) {product.inputName().invoke('val', text);},
-    typeCard(text) {product.inputCreditCard().invoke('val', text);},
-    sweetAlertShouldBeVisible(){product.sweetAlert().should('be.visible');},
-    clickOkButton () {product.okButton().click()},
-    orderTextShouldContain(data){product.orderText().should('contain', data);},
+    clickOnProduct () {
+        product.thirdProduct().click();
+    },
+    imageShouldBeVisible () {
+        product.productImage().should('be.visible')
+    },
+    productTitleShouldBeVisible () {
+        product.productTitle().should('be.visible')
+    },
+    priceContainerShouldBeVisible () {
+        product.priceContainer().should('be.visible')
+    },
+    productDescriptionShouldBeVisible () {
+        product.productDescriptionTab().should('be.visible')
+    },
+    clickOnAddToCart () {
+        product.addToCartButton().click();
+    },
+    cartAlertShouldHaveText (text) {
+        alert.textEqualsTo(text)
+    },
+    clickOnCart (){
+        product.cart().click();
+    },
+    numberOfProductsAddedShouldBe (number) {
+        product.productsAdded().should('have.length', number)
+    },
+    totalPriceShouldBeVisible(){
+        product.totalPrice().should('be.visible')
+    },
+    cartPageTitleShouldBe(text){
+        product.cartPageTitle().should('have.text', text)
+    },
+    tableHeadImageTextShouldBe(text){
+        product.tableHeadImage().should('have.text', text)
+    },
+    tableHeadTitleTextShouldBe(text){
+        product.tableHeadTitle().should('have.text', text)
+    },
+    tableHeadPriceTextShouldBe(text){
+        product.tableHeadPrice().should('have.text', text)
+    },
+    tableHeadDeleteTextShouldBe(text){
+        product.tableHeadDelete().should('have.text', text)
+    },
+    deleteFirstProduct(){
+        product.firstDeleteButton().click();
+    },
+    placeORder(){
+        product.placeOrderButton().click()
+    },
+    orderModalShouldBeVisible () {
+        product.orderModal().should('be.visible');
+    },
+    clickOnPurchase(){
+        product.purchaseButton().click();
+    },
+    typeName(text) {
+        product.inputName().type(text);//.invoke('val', text);
+    },
+    typeCard(text) {
+        product.inputCreditCard().invoke('val', text);
+    },
+    sweetAlertShouldBeVisible(){
+        product.sweetAlert().should('be.visible');
+    },
+    clickOkButton () {
+        product.okButton().click()
+    },
+    orderTextShouldContain(data){
+        product.orderText().should('contain', data);
+    },
     orderTextShouldHavePrice(){
         product.totalPrice().invoke('text').then((text)=>{
             product.orderText().should('contain', text);
