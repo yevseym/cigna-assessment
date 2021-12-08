@@ -1,5 +1,5 @@
-import {basePage} from './pageObjects/base.page.js';
-import { go } from './pageObjects/base.page.js';
+import {go, basePage} from './pageObjects/base.page.js';
+//import { go } from './pageObjects/base.page.js';
 import {logIn} from './pageObjects/userLogin.page.js';
 
 describe ('log in the site', function () {

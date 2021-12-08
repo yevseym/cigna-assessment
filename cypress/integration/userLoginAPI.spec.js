@@ -21,7 +21,7 @@ describe('Given login through API and adding a product to the cart', () => {
                 expect(response.status).to.be.eq(200)
                 token = JSON.stringify(response.body).split(':')[1].replace(/\"/g,'').trim()
                 cy.log('user token is:' + token)
-            })
+            });
         });
 
         it('Then validate the user id, token and expiration', () => {
@@ -57,7 +57,7 @@ describe('Given login through API and adding a product to the cart', () => {
             .should((response) => {
                 expect(response.status).to.be.eq(200)
                 cy.log(response.body)
-            })
+            });
         });
 
         it('Then check the product in the cart', () => {      
@@ -74,7 +74,7 @@ describe('Given login through API and adding a product to the cart', () => {
                 expect(response.body.Items[0].id).eq(newuuid)
                 expect(response.body.Items[0].cookie).eq("first@mailsac.com")
                 expect(response.body.Items[0].prod_id).eq(5)
-            })
+            });
         });
 
         it('And delete the product from the cart', () => {      
@@ -88,8 +88,7 @@ describe('Given login through API and adding a product to the cart', () => {
             .should((response) => {
                 expect(response.status).to.be.eq(200)
                 expect(response.body).eq('Item deleted.')
-
-            })
+            });
         });
     });
 });

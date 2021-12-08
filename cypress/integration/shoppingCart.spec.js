@@ -1,9 +1,7 @@
-import {basePage} from './pageObjects/base.page.js';
-import {logIn} from './pageObjects/userLogin.page.js';
-import { go } from './pageObjects/base.page.js';
-import {buy} from './pageObjects/shoppingCart.page.js';
-import {cart} from './pageObjects/shoppingCart.page.js';
-
+import { go, basePage } from './pageObjects/base.page.js';
+import { logIn } from './pageObjects/userLogin.page.js';
+import { buy } from './pageObjects/shoppingCart.page.js';
+import { cart } from './pageObjects/shoppingCart.page.js';
 
 
 describe('Select a product and add it to cart', function(){
@@ -25,69 +23,58 @@ describe('Select a product and add it to cart', function(){
 
             logIn.welcomeMessageShouldGreet(credentials.user);
             basePage.wait();
-
-        })
+        });
 
         cy.fixture('cardData.json').then(function(data){
             paying = data;
              // Clear the cart in case there were products in
             buy.clickOnCart();
             cart.clear(paying.name, paying.creditCard);
-
-        });
-
-        
-        
+        });       
     });
 
     beforeEach ('Keep cookies and reload', function(){
         Cypress.Cookies.preserveOnce('tokenp_', 'user');
         basePage.reload();
         go.toHomePage();
-    })
+    });
 
     it ('Should successfully load a product after clicking on it', function(){
         buy.clickOnProduct();
 
         basePage.urlShouldContain('/prod.')
-    })
+    });
 
     it ('Should display product title', function() {
-        buy.clickOnProduct();
-        
+        buy.clickOnProduct();      
         buy.productTitleShouldBeVisible();
-    })
+    });
 
     it ('Should display product image', function() {
         buy.clickOnProduct();
-        
         buy.imageShouldBeVisible();
-    })
+    });
+
+    it ('Should display product price', function() {
+        buy.clickOnProduct(); 
+        buy.priceContainerShouldBeVisible();
+    });
 
     it ('Should display product price', function() {
         buy.clickOnProduct();
-        
         buy.priceContainerShouldBeVisible();
-    })
-
-    it ('Should display product price', function() {
-        buy.clickOnProduct();
-        
-        buy.priceContainerShouldBeVisible();
-    })
+    });
 
     it ('Should display product description', function() {
-        buy.clickOnProduct();
-        
+        buy.clickOnProduct(); 
         buy.productDescriptionShouldBeVisible();
-    })
+    });
 
     it ('Should successfully add a product to cart', function() {
         buy.clickOnProduct();
         buy.clickOnAddToCart();
-
         buy.cartAlertShouldHaveText('Product added');
-    })
+    });
 
 });
 
@@ -108,7 +95,6 @@ describe('Checkout products in cart', function(){
             logIn.typeUser(credentials.user);
             logIn.typePassword(credentials.password);
             logIn.clickOnLogInButton();
-
             logIn.welcomeMessageShouldGreet(credentials.user);
             basePage.wait();
 
@@ -116,7 +102,6 @@ describe('Checkout products in cart', function(){
             buy.clickOnCart();
             basePage.urlShouldContain('cart');
         });
-        
         
         // load paying data
         cy.fixture('cardData.json').then(function(data){
@@ -132,10 +117,9 @@ describe('Checkout products in cart', function(){
             buy.clickOnAddToCart();
             basePage.wait();
             buy.clickOnAddToCart();
-        })
+        });
 
         buy.clickOnCart();
-
     });
 
     beforeEach ('Keep cookies and reload', function(){
@@ -160,11 +144,10 @@ describe('Checkout products in cart', function(){
         // For this case we will check if the three products added
         // at the begginging are loaded in the cart
         buy.numberOfProductsAddedShouldBe(3)
-    })
+    });
 
     it ('Should successfully delete the first product', function(){
         buy.deleteFirstProduct();
-
         buy.numberOfProductsAddedShouldBe(2);
     });
 
@@ -174,14 +157,12 @@ describe('Checkout products in cart', function(){
 
     it ('Should display purchase modal after clicking on place order', function(){
         buy.placeORder();
-
         buy.orderModalShouldBeVisible();
     });
 
     it ('Should not allow to place an order without name or card introduced', function(){
         buy.placeORder();
         buy.clickOnPurchase();
-
         buy.cartAlertShouldHaveText('Please fill out Name and Creditcard.');
     });
 
@@ -190,11 +171,9 @@ describe('Checkout products in cart', function(){
         buy.typeName(paying.name);
         buy.typeCard(paying.creditCard);
         buy.clickOnPurchase();
-
         buy.sweetAlertShouldBeVisible();
         buy.orderTextShouldContain(paying.name);
         buy.orderTextShouldContain(paying.creditCard);
         buy.orderTextShouldHavePrice()
-
     });
 });
